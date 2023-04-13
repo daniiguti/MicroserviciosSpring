@@ -1,9 +1,8 @@
 spring:
  application:
   name: user-service
- cloud:
+ cloud: 
   config:
    uri: http://localhost:9023
    username: root
-   password: root 
-
+   password: root
