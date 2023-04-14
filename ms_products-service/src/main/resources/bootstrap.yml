@@ -5,4 +5,4 @@ spring:
   config:
    uri: http://localhost:9023
    username: root
-   password: root
+   password: root   
