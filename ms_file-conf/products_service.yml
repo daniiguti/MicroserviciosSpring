@@ -13,14 +13,3 @@ eureka:
  client:
   serviceUrl:
    defaultZone: http://localhost:9020/eureka/
-
-spring:
-	cloud:
-		openfeign:
-			client:
-				config:
-					feignName:
-      url: http://localhost:9021
-						connectTimeout: 5000
-						readTimeout: 5000
-
