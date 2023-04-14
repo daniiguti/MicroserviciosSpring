@@ -31,3 +31,36 @@ en una carpeta de git.
 <br>
 Algo muy potente y muy útil, complejo de programar pero una vez hecho, te quitará calentamientos de cabeza futuros. 
 <br> <br> Documentación oficial: [https://spring.io/projects/spring-cloud](https://spring.io/projects/spring-cloud)
+<br>
+<br>
+## EUREKA SERVER
+### ¿Qué ocurre cuando tenemos varios microservicios desplegados en distintas ips?¿Como saben los usuarios cual es la dirección de cada uno?
+Para esto tenemos Eureka Server, tenemos:
+<br> [ms_registry-service](https://github.com/daniiguti/MicroserviciosSpring/tree/master/ms_registry-service)
+<br> Aquí tendremos que tener el servicio Servidor, anotar nuestra clase que lanza el programa con @EnableEurekaServer
+
+También tenemos:
+<br> [registry_service.yml](https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_file-conf/registry_service.yml)
+<br> Donde configuraremos nuestro acceso a EurekaServer
+
+*No olvidar configurar el bootstrap.yml del proyecto de Eureka para conectarlo a Spring Cloud y utlizar los ficheros de configuración
+de aquí.
+
+Todo lo que tendríamos que hacer es configurar nuestro archivo de configuracion de Eureka, y añadir tres lineas a los archivos de configuración de nuestros
+microservicios y a las clases que lanzan dichos microservicios añadirle la anotación @EnableEurekaClient, con esto tendríamos una página donde tenemos
+todos los microservicios disponibles para acceder a estos, algo simple, útil y fácil de implementar en cualquier proyecto.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
