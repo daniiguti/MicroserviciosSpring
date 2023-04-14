@@ -8,6 +8,11 @@ spring:
    username: PruebaWeb
    password: PruebaWeb
 
+#url -> registry_service, ahí está
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:9020/eureka/
 
 
 
