@@ -2,6 +2,7 @@
 ### Proyecto realizado con Spring, en el utilizamos las herramientas más potentes que nos ofrece Spring Boot.
 Versión de Java: 11
 <br> Versión de Spring Boot: 2.7
+<br> *Este programa se conecta a una bdd local de Oracle llamada PruebaWeb
 
 ## SPRING CLOUD
 ### IMPORTANTE
