@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>microservicios_con_spring_2</artifactId>
+	<artifactId>ms_user-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ms_user-service</name>
 	<description>Demo project for Spring Boot</description>
