@@ -1,15 +1,7 @@
 package com.example.demo.Modelos;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "usuarios")
 public class Usuario {
 	
-	//atribs
-	@Id
 	private String usuario;
 	private String contrasenia;
 	private int compra;

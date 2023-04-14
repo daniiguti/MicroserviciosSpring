@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.Repositorios.CategoriaRepository;
 import com.example.demo.Repositorios.ProductoRepository;
+import com.example.demo.Usuario.UserService;
 import com.example.demo.Modelos.Categoria;
 import com.example.demo.Modelos.Producto;
+import com.example.demo.Modelos.Usuario;
 
 @Component
 public class ConexionDB {
@@ -17,13 +19,21 @@ public class ConexionDB {
 	private ProductoRepository repositorioProductos;
 	@Autowired
 	private CategoriaRepository repositorioCategorias;
+	@Autowired
+	private UserService servicioUser;
 	
 	//PRODUCTOS
 	public List<Producto> getAllProductos() {
 		return repositorioProductos.findAll();
 	}
 	public Producto getProducto(Long id) {
-		return repositorioProductos.findById(id).orElse(null);
+		Producto p = repositorioProductos.findById(id).orElse(null);
+		if(p != null) {
+			Usuario user = servicioUser.getUsuario(p.getUsuario().getUsuario()).getBody();
+			p.setUsuario(user);
+		}
+		
+		return p;
 	}
 	public Producto insertarProducto(Producto p) {
 		Producto aux = repositorioProductos.findById(p.getIdProducto()).orElse(null);

@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "productos")
@@ -19,7 +20,11 @@ public class Producto {
 	@ManyToOne
 	@JoinColumn(name="id_categoria")
 	private Categoria id_categoria;
-
+	
+	//Transient para que no se guarde en la bdd
+	@Transient
+	private Usuario usuario;
+	
     //constructores
     public Producto() {
     	
@@ -63,6 +68,13 @@ public class Producto {
 	public void setCategoria(Categoria categoria) {
 		this.id_categoria = categoria;
 	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
        
 }
 	
