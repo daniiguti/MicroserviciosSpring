@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.Modelos.Usuario;
 
-@FeignClient(name = "user_service")
+@FeignClient(name = "ms_user-service", url = "http://localhost:9021")
 public interface UserService {
 
 	@GetMapping("/usuarios/{idUsuario}")
