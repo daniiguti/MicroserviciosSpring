@@ -34,7 +34,7 @@ Algo muy potente y muy útil, complejo de programar pero una vez hecho, te quita
 <br>
 <br>
 ## EUREKA SERVER
-### ¿Qué ocurre cuando tenemos varios microservicios desplegados en distintas ips?¿Como saben los usuarios cual es la dirección de cada uno?
+### ¿Qué ocurre cuándo tenemos varios microservicios desplegados en distintas ips?¿Como saben los usuarios cual es la dirección de cada uno?
 Para esto tenemos Eureka Server, tenemos:
 <br> [ms_registry-service](https://github.com/daniiguti/MicroserviciosSpring/tree/master/ms_registry-service)
 <br> Aquí tendremos que tener el servicio Servidor, anotar nuestra clase que lanza el programa con @EnableEurekaServer.
@@ -49,7 +49,23 @@ de aquí.
 Todo lo que tendríamos que hacer es configurar nuestro archivo de configuracion de Eureka, y añadir tres lineas a los archivos de configuración de nuestros
 microservicios y a las clases que lanzan dichos microservicios añadirle la anotación @EnableEurekaClient, con esto tendríamos una página donde tenemos
 todos los microservicios disponibles para acceder a estos, algo simple, útil y fácil de implementar en cualquier proyecto.
-
+<br><br>Documentación oficial: [https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html)
+<br>
+<br>
+## SPRING OPEN-FEIGN
+### ¿Qué ocurre cuándo tenemos un servicio API REST que necesita de otro servicio API REST?
+por ejemplo, imaginaros que tenemos una api, que devuelve productos, y otra api, que devuelve facturas, ¿Qué ocurre cuando queremos que en esas facturas
+se devuelva también toda la información de los productos que llevan nuestras facturas? Para esto tenemos Spring Open-Feign, para no tener que desarrollar
+el acceso a nuestra bdd otra vez y cambiar toda nuestra estructura, Spring nos ofrece esto, simplemente creandonos una interfaz que tenga la anotación de
+@FeignClient, con su configuración e implementando el metodo de la otra API
+<br> [VER AQUÍ](https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_products-service/src/main/java/com/example/demo/Usuario/UserService.java)
+<br> y, además introduciendo el objeto que queremos devolver dentro de la clase que ya devolviamos (anotado con @Transient para que no
+lo añada a la bdd)
+<br> [VER AQUÍ](https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_products-service/src/main/java/com/example/demo/Modelos/Producto.java)
+<br> y configurando nuestro metodo que devolvía el objeto, para que ahora devuelva el objeto viejo y el objeto nuevo, obteniendolo a través del servicio
+que ya estaba disponible(en mi caso, esto no se podía aplicar con sentido, por lo que decidí que en todos los productos se devolviera también el usuario "dani", por lo que si accedíamos a un producto en específico, también veriamos el usuario dani, pero bueno, era para probar que funcionaba correctamente).
+<br> [VER AQUÍ](https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_products-service/src/main/java/com/example/demo/Modelos/Producto.java)
+<br><br>Documentación oficial: [https://spring.io/guides/gs/service-registration-and-discovery/](https://spring.io/guides/gs/service-registration-and-discovery/)
 
 
 
