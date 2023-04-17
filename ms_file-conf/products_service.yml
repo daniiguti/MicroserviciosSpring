@@ -18,7 +18,10 @@ Feign:
  hystrix:
   enabled: true
   dashboard:
-    proxyStreamAllowList: "localhost"
+   proxy-stream-allow-list: "localhost"
+  stream:
+   endpoint:
+    url: http://localhost:9022/actuator/hystrix.stream
 management:
  endpoints:
   web:
