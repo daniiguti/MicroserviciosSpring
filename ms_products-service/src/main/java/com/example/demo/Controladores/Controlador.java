@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Modelos.Categoria;
 import com.example.demo.Modelos.Producto;
 import com.example.demo.Servicios.ConexionDB;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 public class Controlador {
@@ -55,6 +56,7 @@ public class Controlador {
 		}
 	}
 	
+	@HystrixCommand
 	@GetMapping("/productos/{idProducto}")
 	public ResponseEntity<Producto> getProducto(@PathVariable String idProducto){
 		Long id;
