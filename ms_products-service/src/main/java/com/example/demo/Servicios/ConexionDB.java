@@ -30,8 +30,8 @@ public class ConexionDB {
 	public Producto getProducto(Long id) {
 		Producto p = repositorioProductos.findById(id).orElse(null);
 		if(p != null) {
-			//Usuario user = servicioUser.getUsuario("dani").getBody();
-			//p.setUsuario(user);
+			Usuario user = servicioUser.getUsuario("dani").getBody();
+			p.setUsuario(user);
 		}
 		
 		return p;
