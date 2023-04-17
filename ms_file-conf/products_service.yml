@@ -18,7 +18,7 @@ Feign:
  hystrix:
   enabled: true
   dashboard:
-    proxyStreamAllowList: "*"
+    proxyStreamAllowList: "localhost"
 management:
  endpoints:
   web:
