@@ -67,9 +67,20 @@ que ya estaba disponible(en mi caso, esto no se podía aplicar con sentido, por 
 <br> [VER AQUÍ](https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_products-service/src/main/java/com/example/demo/Modelos/Producto.java)
 <br><br>Documentación oficial: [https://spring.io/guides/gs/service-registration-and-discovery/](https://spring.io/guides/gs/service-registration-and-discovery/)
 
-
-
-
+## HYSTRIX
+### ¿Qué ocurre cuándo uno de nuestros microservicios, uno de sus métodos da fallo?
+Imaginemos que nuestro microservicio de productos tarda demasiado tiempo en devolvernos la solicitud y salta una excepción, de tal forma que el servidor estaría caído e innacesible para nadie, pues para esto tenemos Hystrix. 
+<br> Añadiendo las dependencias de Hystrix y en nuestra clase principal añadir la anotación @EnableHystrix
+<br> [VER AQUÍ](https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_products-service/src/main/java/com/example/demo/MsProductsServiceApplication.java)
+<br> y configurando nuestro products-service.yml para activar Hystrix (las últimas lineas),
+<br> [VER AQUÍ](https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_file-conf/products_service.yml)
+<br> y, por último encima del método que pueda dar excepcion (en mi caso lo hice para que a la hora de buscar un producto por el id, saltará excepcion si o si), añadir
+@HystrixCommand(fallbackMethod = "prueba"), y un metodo con los mismos parámetros y el mismo return que este, devolviendo lo que quieras para solucionar el error, en mi caso hice un método sencillo que buscaba el producto y le cambio el usuario.
+<br> [VER AQUÍ](https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_products-service/src/main/java/com/example/demo/MsProductsServiceApplication.java)
+<br>
+<br>Gracias a Hystrix podemos controlar cuando nos de un error, hacer lo que queramos, para que el servidor no se caiga y preveer posibles fallos incontrolables.
+<br>
+<br>Documentación oficial: [https://cloud.spring.io/spring-cloud-netflix/multi/multi__circuit_breaker_hystrix_clients.html](https://cloud.spring.io/spring-cloud-netflix/multi/multi__circuit_breaker_hystrix_clients.html)
 
 
 
