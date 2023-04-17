@@ -17,8 +17,3 @@ eureka:
 Feign:
  hystrix:
   enabled: true
-management:
- endpoints:
-  web:
-   exposure:
-    include: "*"     
