@@ -77,6 +77,7 @@ Imaginemos que nuestro microservicio de productos tarda demasiado tiempo en devo
 <br> y, por último encima del método que pueda dar excepcion (en mi caso lo hice para que a la hora de buscar un producto por el id, saltará excepcion si o si), añadir
 @HystrixCommand(fallbackMethod = "prueba"), y un metodo con los mismos parámetros y el mismo return que este, devolviendo lo que quieras para solucionar el error, en mi caso hice un método sencillo que buscaba el producto y le cambio el usuario.
 <br> [VER AQUÍ](https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_products-service/src/main/java/com/example/demo/MsProductsServiceApplication.java)
+<br> Como explicaba más arriba, al utilizar Feign, nosotros cuando buscabamos un producto por su id, nos metía en ese producto el usuario dani, el microservicio de products_service utilizaba el microservicio de user_service, ahora al dar fallo lo que hacemos es cambiar a mano el usuario por otro (david), pero como vemos todo este ecosistema sigue funcionando perfectamente, ya que primero se llamará al producto con el usuario dani y despues este usuario lo cambiaremos a mano, por el usuario david, para ver que efectivamente Hystrix funciona, pero Feign sigue funcionando.
 <br>
 <br>Gracias a Hystrix podemos controlar cuando nos de un error, hacer lo que queramos, para que el servidor no se caiga y preveer posibles fallos incontrolables.
 <br>
