@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.example.demo.Repositorios.CategoriaRepository;
 import com.example.demo.Repositorios.ProductoRepository;
 import com.example.demo.Usuario.UserService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.example.demo.Modelos.Categoria;
 import com.example.demo.Modelos.Producto;
 import com.example.demo.Modelos.Usuario;
@@ -26,6 +27,7 @@ public class ConexionDB {
 	public List<Producto> getAllProductos() {
 		return repositorioProductos.findAll();
 	}
+	@HystrixCommand
 	public Producto getProducto(Long id) {
 		/*Producto p = repositorioProductos.findById(id).orElse(null);
 		if(p != null) {
@@ -37,7 +39,7 @@ public class ConexionDB {
 		
 		 try {
 		        // Agrega un retraso de 5 segundos para simular una llamada lenta
-		        Thread.sleep(20000);
+		        Thread.sleep(800);
 		    } catch (InterruptedException e) {
 		        e.printStackTrace();
 		    }
