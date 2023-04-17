@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Modelos.Categoria;
 import com.example.demo.Modelos.Producto;
+import com.example.demo.Modelos.Usuario;
 import com.example.demo.Servicios.ConexionDB;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
@@ -56,9 +57,12 @@ public class Controlador {
 		}
 	}
 	
-	@HystrixCommand
+	@HystrixCommand(fallbackMethod = "prueba")
 	@GetMapping("/productos/{idProducto}")
-	public ResponseEntity<Producto> getProducto(@PathVariable String idProducto){
+	public ResponseEntity<Producto> getProducto(@PathVariable String idProducto) throws Exception{
+		throw new Exception("Error");
+			
+		/*
 		Long id;
 		try {
 			id = Long.valueOf(idProducto);
@@ -72,7 +76,7 @@ public class Controlador {
 			return ResponseEntity.ok(p);
 		}else {
 			return ResponseEntity.noContent().build();
-		}
+		}*/
 	}
 	
 	//subir un producto
@@ -88,4 +92,15 @@ public class Controlador {
 		conexion.eliminarProducto(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	//si da fallo se viene a este metodo, gracias al circuitbreaker de hystrix
+	public ResponseEntity<Producto> prueba(String id) {
+		Long idP = Long.valueOf(id);
+		Producto p = conexion.getProducto(idP);
+		Usuario user = new Usuario("david", "1234", 0);
+		p.setUsuario(user);
+		return ResponseEntity.ok(p);
+	}
 }
+
+

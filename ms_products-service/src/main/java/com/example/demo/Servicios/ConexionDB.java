@@ -28,21 +28,14 @@ public class ConexionDB {
 	}
 	
 	public Producto getProducto(Long id) {
-		/*Producto p = repositorioProductos.findById(id).orElse(null);
+		Producto p = repositorioProductos.findById(id).orElse(null);
 		if(p != null) {
-			Usuario user = servicioUser.getUsuario("dani").getBody();
-			p.setUsuario(user);
+			//Usuario user = servicioUser.getUsuario("dani").getBody();
+			//p.setUsuario(user);
 		}
 		
-		return p;*/
+		return p;
 		
-		 try {
-		        // Agrega un retraso de 5 segundos para simular una llamada lenta
-		        Thread.sleep(800);
-		    } catch (InterruptedException e) {
-		        e.printStackTrace();
-		    }
-		 return null;
 	}
 	public Producto insertarProducto(Producto p) {
 		Producto aux = repositorioProductos.findById(p.getIdProducto()).orElse(null);
