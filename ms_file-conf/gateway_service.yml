@@ -17,8 +17,9 @@ spring:
         - id: products_service
           uri: lb://products_service
           predicates:
-            - Path=/products/**
+             #Va a buscar en /productos/** si hay algun controlador que maneje estas solicitudes
+            - Path=/productos/**
         - id: user_service
           uri: lb://user_service
           predicates:
-            - Path=/user/** 
+            - Path=/usuarios/** 
