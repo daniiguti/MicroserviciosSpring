@@ -1,0 +1,8 @@
+server:
+  port: 9024
+
+#url -> registry_service, ahí está
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:9020/eureka/
