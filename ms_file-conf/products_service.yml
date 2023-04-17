@@ -17,12 +17,8 @@ eureka:
 Feign:
  hystrix:
   enabled: true
-  dashboard:
-   proxy-stream-allow-list: "**"
- ribbon:
-  enabled: true
- circuitbreaker:
-  enabled: true
+   dashboard:
+    proxy-stream-allow-list: "localhost"
 management:
  endpoints:
   web:
