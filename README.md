@@ -96,6 +96,11 @@ Tenemos:
 
 Documentación oficial: [https://cloud.spring.io/spring-cloud-gateway/reference/html/](https://cloud.spring.io/spring-cloud-gateway/reference/html/)
 
+## SLEUTH
+### ¿Qué hacemos cuando queremos trazabilizar las peticiones que recibe nuestro servidor?
+Para eso tenemos SLEUTH, añadiendo la dependencia, a los proyectos/microservicios donde queremos que se registren las peticiones, cada vez que este reciba una petición generará un id automático.
+
+Documentación oficial: [https://cloud.spring.io/spring-cloud-sleuth/reference/html/](https://cloud.spring.io/spring-cloud-sleuth/reference/html/)
 
 
 
