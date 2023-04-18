@@ -87,12 +87,12 @@ Imaginemos que nuestro microservicio de productos tarda demasiado tiempo en devo
 ### ¿Cuándo tenemos distintos microservicios, tenemos que acceder a cada uno por direcciones distintas?
 La respuesta es no, para este problema tenemos GATEWAY, como funciona es simple, desde una misma dirección podemos acceder a todas las que hayamos configurado
 Tenemos: 
-<br> [gateway_service.yml (https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_file-conf/gateway_service.yml)
-Donde configuraremos el Gateway, diciéndole:
+<br> [gateway_service.yml](https://github.com/daniiguti/MicroserviciosSpring/blob/master/ms_file-conf/gateway_service.yml)
+<br> Donde configuraremos el Gateway, diciéndole:
 <br>-el id
 <br>-la uri donde está ese microservicio
-<br>-a las direcciones que tiene permitidas acceder (en mi caso **, para permitirle todas)
-Con esto tan simple, podremos acceder a todos nuestros microservicios desde un enlace.
+<br>-a las direcciones que tiene permitidas acceder (en mi caso doble asterisco, para permitirle todas)
+<br> Con esto tan simple, podremos acceder a todos nuestros microservicios desde un enlace.
 
 Documentación oficial: [https://cloud.spring.io/spring-cloud-gateway/reference/html/](https://cloud.spring.io/spring-cloud-gateway/reference/html/)
 
